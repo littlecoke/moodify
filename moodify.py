@@ -54,14 +54,14 @@ def get_input(bot, update):
         update.message.reply_text("Thinking hard...")
         logger.info("Photo received from %s" % user.first_name)
         photo_id = update.message.photo[-1].file_id
-        json_url = ('https://api.telegram.org/bot' + KEYS['BotKey'] + 
+        json_url = ('https://api.telegram.org/bot' + KEYS['488464613:AAHMHWkjBlmWnP_1dn3hGYJBamHlbDKBhBE'] + 
                     '/getFile?file_id=' + photo_id)
         logger.info(update.message.photo[-1].file_size)
         
         logger.info(requests.get(json_url).json())
 
         file_path = (requests.get(json_url).json())['result']['file_path']
-        photo_url = 'https://api.telegram.org/file/bot' + KEYS['BotKey'] + "/" + file_path
+        photo_url = 'https://api.telegram.org/file/bot' + KEYS['488464613:AAHMHWkjBlmWnP_1dn3hGYJBamHlbDKBhBE'] + "/" + file_path
         logger.info(photo_url)
         
         headers = dict()
@@ -101,13 +101,13 @@ def error(bot, update, error):
 
 def main():
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater(KEYS['BotKey'])
+    updater = Updater(KEYS['488464613:AAHMHWkjBlmWnP_1dn3hGYJBamHlbDKBhBE'])
     PORT = int(os.environ.get('PORT', '5000'))
 
     updater.start_webhook(listen = "0.0.0.0",
                           port = PORT,
-                          url_path = KEYS['BotKey'])
-    updater.bot.setWebhook("https://moodify-bot.herokuapp.com/" + KEYS['BotKey'])
+                          url_path = KEYS['488464613:AAHMHWkjBlmWnP_1dn3hGYJBamHlbDKBhBE'])
+    updater.bot.setWebhook("https://moodify-bot.herokuapp.com/" + KEYS['488464613:AAHMHWkjBlmWnP_1dn3hGYJBamHlbDKBhBE'])
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
